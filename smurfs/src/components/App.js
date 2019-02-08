@@ -28,14 +28,15 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-          <SmurfList />
+          <SmurfList smurfs={this.props.smurfs} />
       </div>
     );
   }
 }
 const mapStateToProps = state => ({
     error: state.error,
-    smurfs: state.
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs
 })
 
 export default connect(
