@@ -30,3 +30,4 @@ export const getSmurf = () => dispatch => {
         .catch(error => dispatch({ type: SMURFS_ERROR, payload: error })
         )
 }
+export const addSmurf = smurf =>
