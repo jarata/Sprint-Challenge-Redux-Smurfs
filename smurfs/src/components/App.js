@@ -49,9 +49,10 @@ class App extends Component {
                 <div>Welcome to your Redux version of Smurfs!</div>
                 <div>Start inside of your `src/index.js` file!</div>
                 <div>Have fun!</div>
-                <AddSmurfForm addSmurf={this.addSmurf} handleChange={this.handleChange} />
+                <hr />
+                <AddSmurfForm smurf={this.state.smurf} smurfs={this.props.smurf} addSmurf={this.addSmurf} handleChange={this.handleChange} />
                 <div>
-                    <SmurfList smurfs={this.props.smurfs} />
+                    <SmurfList smurfs={this.props.smurfs} smurf={this.state.smurf} />
                 </div>
             </div>
         );
