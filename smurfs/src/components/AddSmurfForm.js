@@ -3,29 +3,29 @@ import React from 'react'
 const AddSmurfForm = props => {
     return (
         <div>
-            <form>
+            <form onSubmit={props.addSmurf}>
                 <input
                     type="text"
-                    name=""
-                    placeholder=""
-                    onChange=""
-                    value=""
+                    name="name"
+                    placeholder="Enter name here"
+                    onChange={props.handleChange}
+                    value={props.name}
                 />
                 <input
                     type="text"
-                    name=""
-                    placeholder=""
-                    onChange=""
-                    value=""
+                    name="age"
+                    placeholder="Enter age here"
+                    onChange={props.handleChange}
+                    value={props.age}
                 />
                 <input
                     type="text"
-                    name=""
-                    placeholder=""
-                    onChange=""
-                    value=""
+                    name="height"
+                    placeholder="Enter height here"
+                    onChange={props.handleChange}
+                    value={props.height}
                 />
-                <button>Add New Smurf!</button>
+                <button type="submit">Add New Smurf!</button>
             </form>
         </div>
     )
