@@ -16,21 +16,16 @@ import axios from 'axios'
 export const SMURFS_FETCHING = 'SMURFS_FETCHING';
 export const SMURFS_ADDING = 'SMURFS_ADDING';
 export const SMURFS_ERROR = 'SMURFS_ERROR';
+export const SMURFS_SUCCESS = 'SMURFS_SUCCESS';
+export const SMURFS_ADDED = 'SMURFS_ADDED';
 
 export const getSmurf = () => dispatch => {
     dispatch({ type: SMURFS_FETCHING });
     axios
         .get('http://localhost:3333/smurfs')
         .then(response => {
-            console.log(reponse)
+            console.log(response)
         })
+        .catch(error => dispatch({ type: SMURFS_ERROR, payload: error })
+        )
 }
-
-
-
-// smurfs: [],
-//     fetchingSmurfs: false
-// addingSmurf: false
-// updatingSmurf: false
-// deletingSmurf: false
-// error: null
