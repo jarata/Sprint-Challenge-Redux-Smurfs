@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -6,14 +6,21 @@ import './App.css';
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
-import { connect } from 'react-redux'
-import { getSmurf } from '../actions'
+import {connect} from 'react-redux'
+import {getSmurf} from '../actions'
 import SmurfList from "./SmurfList";
 
 
 class App extends Component {
     constructor() {
         super();
+        this.state = {
+            smurf: {
+                name: '',
+                age: '',
+                height: ''
+            }
+        }
     }
 
     componentDidMount() {
@@ -21,24 +28,36 @@ class App extends Component {
         // console.log(this.props)
     }
 
+    handleChange = event => {
+        this.setState({
+            smurf: {
+                ...this.state,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
+
     render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-          <div>
-              <SmurfList smurfs={this.props.smurfs} />
-          </div>
-      </div>
-    );
-  }
+        return (
+            <div className="App">
+                <h1>SMURFS! 2.0 W/ Redux</h1>
+                <div>Welcome to your Redux version of Smurfs!</div>
+                <div>Start inside of your `src/index.js` file!</div>
+                <div>Have fun!</div>
+                <div>
+                    <SmurfList smurfs={this.props.smurfs}/>
+                </div>
+            </div>
+        );
+    }
 }
+
 const mapStateToProps = state => ({
     error: state.error,
     smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs
+    fetchingSmurfs: state.fetchingSmurfs,
+    addingSmurf: state.addingSmurf,
+    addedSmurf: state.addedSmurf
 })
 
 export default connect(
@@ -48,11 +67,3 @@ export default connect(
         addSmurf
     }
 )(App);
-// const initialState = {
-//     smurfs: [],
-//     fetchingSmurfs: false,
-//     addingSmurf: false,
-//     updatingSmurf: false,
-//     deletingSmurf: false,
-//     error: null
-// };
