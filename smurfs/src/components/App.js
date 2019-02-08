@@ -33,12 +33,15 @@ class App extends Component {
     handleChange = event => {
         this.setState({
             smurf: {
-                ...this.state,
+                ...this.state.smurf,
                 [event.target.name]: event.target.value
             }
         })
-    }
-
+    };
+    addSmurf = event => {
+        event.preventDefault();
+        this.props.addSmurf(this.state.smurf)
+    };
     render() {
         return (
             <div className="App">
@@ -46,9 +49,9 @@ class App extends Component {
                 <div>Welcome to your Redux version of Smurfs!</div>
                 <div>Start inside of your `src/index.js` file!</div>
                 <div>Have fun!</div>
-                <AddSmurfForm  addSmurf={this.addSmurf} handleChange={this.handleChange} />
+                <AddSmurfForm addSmurf={this.addSmurf} handleChange={this.handleChange} />
                 <div>
-                    <SmurfList smurfs={this.props.smurfs}/>
+                    <SmurfList smurfs={this.props.smurfs} />
                 </div>
             </div>
         );
