@@ -41,6 +41,9 @@ class App extends Component {
     addSmurf = event => {
         event.preventDefault();
         this.props.addSmurf(this.state.smurf)
+        this.setState({
+            smurf: ''
+        })
     };
     render() {
         return (
@@ -50,9 +53,9 @@ class App extends Component {
                 <div>Start inside of your `src/index.js` file!</div>
                 <div>Have fun!</div>
                 <hr />
-                <AddSmurfForm smurf={this.state.smurf} smurfs={this.props.smurf} addSmurf={this.addSmurf} handleChange={this.handleChange} />
+                <AddSmurfForm smurf={this.state.smurf} smurfs={this.props.smurfs} addSmurf={this.addSmurf} handleChange={this.handleChange} />
                 <div>
-                    <SmurfList smurfs={this.props.smurfs} smurf={this.state.smurf} />
+                    <SmurfList smurfs={this.props.smurfs} />
                 </div>
             </div>
         );
@@ -67,7 +70,7 @@ const mapStateToProps = state => ({
     addedSmurf: state.addedSmurf
 })
 
-export default connect(
+export default connect (
     mapStateToProps,
     {
         getSmurf,
